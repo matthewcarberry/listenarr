@@ -254,14 +254,15 @@ namespace NzbDrone.Core.Configuration
         {
             get
             {
-                var instanceName = _appOptions.InstanceName ?? GetValue("InstanceName", BuildInfo.AppName);
+                var instanceName = _appOptions.InstanceName ?? GetValue("InstanceName", BuildInfo.DisplayName);
 
-                if (instanceName.Contains(BuildInfo.AppName, StringComparison.OrdinalIgnoreCase))
+                if (instanceName.Contains(BuildInfo.DisplayName, StringComparison.OrdinalIgnoreCase) ||
+                    instanceName.Contains(BuildInfo.AppName, StringComparison.OrdinalIgnoreCase))
                 {
                     return instanceName;
                 }
 
-                return BuildInfo.AppName;
+                return BuildInfo.DisplayName;
             }
         }
 
