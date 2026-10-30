@@ -29,7 +29,7 @@ namespace NzbDrone.Core.Test.HistoryTests
         public void should_get_download_history()
         {
             var historyBluray = Builder<EntityHistory>.CreateNew()
-                .With(c => c.Quality = new QualityModel(Quality.MP3))
+                .With(c => c.Quality = new QualityModel(Quality.FLAC))
                 .With(c => c.AuthorId = 12)
                 .With(c => c.EventType = EntityHistoryEventType.Grabbed)
                 .BuildNew();
