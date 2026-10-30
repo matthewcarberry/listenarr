@@ -53,7 +53,6 @@ namespace NzbDrone.Core.Test.MediaFiles
             book.Editions = new List<Edition> { edition };
 
             var rootFolder = Builder<RootFolder>.CreateNew()
-                .With(r => r.IsCalibreLibrary = false)
                 .Build();
 
             _rejectedDecisions.Add(new ImportDecision<LocalBook>(new LocalBook(), new Rejection("Rejected!")));
@@ -169,7 +168,7 @@ namespace NzbDrone.Core.Test.MediaFiles
         public void should_import_higher_quality_files_first()
         {
             var lqDecision = _approvedDecisions.First();
-            lqDecision.Item.Quality = new QualityModel(Quality.MOBI);
+            lqDecision.Item.Quality = new QualityModel(Quality.MP3);
             lqDecision.Item.Size = 10.Megabytes();
 
             var hqDecision = new ImportDecision<LocalBook>(
@@ -180,7 +179,7 @@ namespace NzbDrone.Core.Test.MediaFiles
                     Edition = lqDecision.Item.Edition,
                     Part = 1,
                     Path = @"C:\Test\Music\Alien Ant Farm\Alien Ant Farm - 01 - Pilot.mp3".AsOsAgnostic(),
-                    Quality = new QualityModel(Quality.AZW3),
+                    Quality = new QualityModel(Quality.M4B),
                     Size = 1.Megabytes(),
                     FileTrackInfo = new ParsedTrackInfo
                     {

@@ -60,17 +60,12 @@ namespace NzbDrone.Core.Parser
             switch (codec)
             {
                 case Codec.PDF:
-                    result.Quality = Quality.PDF;
-                    break;
                 case Codec.EPUB:
-                    result.Quality = Quality.EPUB;
-                    break;
                 case Codec.MOBI:
-                    result.Quality = Quality.MOBI;
-                    break;
                 case Codec.AZW3:
-                    result.Quality = Quality.AZW3;
-                    break;
+                    // Ebook releases are not supported, leave them as unknown so they are rejected
+                    result.Quality = Quality.Unknown;
+                    return result;
                 case Codec.FLAC:
                 case Codec.ALAC:
                 case Codec.WAVPACK:

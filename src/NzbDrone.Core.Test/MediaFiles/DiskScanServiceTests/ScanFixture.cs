@@ -187,8 +187,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "file1.mobi"),
-                           Path.Combine(_author.Path, "s01e01.mobi")
+                           Path.Combine(_author.Path, "file1.m4b"),
+                           Path.Combine(_author.Path, "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -204,11 +204,11 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "EXTRAS", "file1.mobi"),
-                           Path.Combine(_author.Path, "Extras", "file2.mobi"),
-                           Path.Combine(_author.Path, "EXTRAs", "file3.mobi"),
-                           Path.Combine(_author.Path, "ExTrAs", "file4.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, "EXTRAS", "file1.m4b"),
+                           Path.Combine(_author.Path, "Extras", "file2.m4b"),
+                           Path.Combine(_author.Path, "EXTRAs", "file3.m4b"),
+                           Path.Combine(_author.Path, "ExTrAs", "file4.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -227,9 +227,9 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, ".AppleDouble", "file1.mobi"),
-                           Path.Combine(_author.Path, ".appledouble", "file2.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, ".AppleDouble", "file1.m4b"),
+                           Path.Combine(_author.Path, ".appledouble", "file2.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -247,12 +247,12 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "Extras", "file1.mobi"),
-                           Path.Combine(_author.Path, ".AppleDouble", "file2.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e02.mobi"),
-                           Path.Combine(_author.Path, "Season 2", "s02e01.mobi"),
-                           Path.Combine(_author.Path, "Season 2", "s02e02.mobi"),
+                           Path.Combine(_author.Path, "Extras", "file1.m4b"),
+                           Path.Combine(_author.Path, ".AppleDouble", "file2.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e02.m4b"),
+                           Path.Combine(_author.Path, "Season 2", "s02e01.m4b"),
+                           Path.Combine(_author.Path, "Season 2", "s02e02.m4b"),
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -268,7 +268,7 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "Book 1", ".t01.mobi")
+                           Path.Combine(_author.Path, "Book 1", ".t01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -284,10 +284,10 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, ".@__thumb", "file1.mobi"),
-                           Path.Combine(_author.Path, ".@__THUMB", "file2.mobi"),
-                           Path.Combine(_author.Path, ".hidden", "file2.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, ".@__thumb", "file1.m4b"),
+                           Path.Combine(_author.Path, ".@__THUMB", "file2.m4b"),
+                           Path.Combine(_author.Path, ".hidden", "file2.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -303,11 +303,11 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "Season 1", ".@__thumb", "file1.mobi"),
-                           Path.Combine(_author.Path, "Season 1", ".@__THUMB", "file2.mobi"),
-                           Path.Combine(_author.Path, "Season 1", ".hidden", "file2.mobi"),
-                           Path.Combine(_author.Path, "Season 1", ".AppleDouble", "s01e01.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, "Season 1", ".@__thumb", "file1.m4b"),
+                           Path.Combine(_author.Path, "Season 1", ".@__THUMB", "file2.m4b"),
+                           Path.Combine(_author.Path, "Season 1", ".hidden", "file2.m4b"),
+                           Path.Combine(_author.Path, "Season 1", ".AppleDouble", "s01e01.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -323,8 +323,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "@eaDir", "file1.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, "@eaDir", "file1.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -340,8 +340,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, ".@__thumb", "file1.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, ".@__thumb", "file1.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -359,8 +359,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             GivenFiles(new List<string>
                        {
-                           Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                           Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                           Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                           Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -377,8 +377,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
             GivenFiles(new List<string>
                        {
                            Path.Combine(_author.Path, ".DS_STORE"),
-                           Path.Combine(_author.Path, "._24 The Status Quo Combustion.mobi"),
-                           Path.Combine(_author.Path, "24 The Status Quo Combustion.mobi")
+                           Path.Combine(_author.Path, "._24 The Status Quo Combustion.m4b"),
+                           Path.Combine(_author.Path, "24 The Status Quo Combustion.m4b")
                        });
 
             Subject.Scan(new List<string> { _author.Path });
@@ -410,8 +410,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
             };
 
             GivenFiles(files);
@@ -432,8 +432,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
             };
 
             GivenFiles(files);
@@ -454,8 +454,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
             };
 
             GivenFiles(files);
@@ -480,8 +480,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
             };
 
             GivenFiles(files);
@@ -506,8 +506,8 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
 
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
-                Path.Combine(_author.Path, "Season 1", "s01e01.mobi")
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
+                Path.Combine(_author.Path, "Season 1", "s01e01.m4b")
             };
 
             GivenFiles(files, new DateTime(2019, 2, 1));
@@ -526,7 +526,7 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
         {
             var files = new List<string>
             {
-                Path.Combine(_author.Path, "Season 1", "file1.mobi"),
+                Path.Combine(_author.Path, "Season 1", "file1.m4b"),
             };
 
             GivenKnownFiles(files);
@@ -537,7 +537,7 @@ namespace NzbDrone.Core.Test.MediaFiles.DiskScanServiceTests
                 .With(x => x.Path = files[0])
                 .With(x => x.Modified = new DateTime(2019, 2, 1))
                 .With(x => x.Size = 100)
-                .With(x => x.Quality = new QualityModel(Quality.MOBI))
+                .With(x => x.Quality = new QualityModel(Quality.M4B))
                 .With(x => x.FileTrackInfo = new ParsedTrackInfo
                 {
                     MediaInfo = Builder<MediaInfoModel>.CreateNew().Build()

@@ -27,7 +27,7 @@ namespace NzbDrone.Core.Test.OrganizerTests
         public void should_clean_book_folder_when_it_contains_illegal_characters_in_book_or_author_title()
         {
             var filename = @"bookfile";
-            var expectedPath = @"C:\Test\Fake- The Author\Fake- The Book\bookfile.mobi";
+            var expectedPath = @"C:\Test\Fake- The Author\Fake- The Book\bookfile.m4b";
 
             var fakeAuthor = Builder<Author>.CreateNew()
                 .With(s => s.Name = "Fake: The Author")
@@ -44,7 +44,7 @@ namespace NzbDrone.Core.Test.OrganizerTests
                 .With(s => s.Book = fakeBook)
                 .Build();
 
-            Subject.BuildBookFilePath(fakeAuthor, fakeEdition, filename, ".mobi").Should().Be(expectedPath.AsOsAgnostic());
+            Subject.BuildBookFilePath(fakeAuthor, fakeEdition, filename, ".m4b").Should().Be(expectedPath.AsOsAgnostic());
         }
     }
 }

@@ -9,7 +9,6 @@ using NLog;
 using NzbDrone.Common.Extensions;
 using NzbDrone.Common.Http.Dispatchers;
 using NzbDrone.Core.Books;
-using NzbDrone.Core.MediaFiles;
 
 namespace NzbDrone.Core.Notifications.Email
 {
@@ -39,9 +38,7 @@ namespace NzbDrone.Core.Notifications.Email
         {
             var body = $"{message.Message} Downloaded and sorted.";
 
-            var paths = Settings.AttachFiles ? message.BookFiles.SelectList(a => a.Path) : null;
-
-            SendEmail(Settings, BOOK_DOWNLOADED_TITLE_BRANDED, body, false, paths);
+            SendEmail(Settings, BOOK_DOWNLOADED_TITLE_BRANDED, body);
         }
 
         public override void OnAuthorAdded(Author author)
@@ -109,7 +106,7 @@ namespace NzbDrone.Core.Notifications.Email
 
             try
             {
-                SendEmail(settings, "Readarr - Test Notification", body);
+                SendEmail(settings, "Listenarr - Test Notification", body);
             }
             catch (Exception ex)
             {
@@ -120,7 +117,7 @@ namespace NzbDrone.Core.Notifications.Email
             return null;
         }
 
-        private void SendEmail(EmailSettings settings, string subject, string body, bool htmlBody = false, List<string> attachmentUrls = null)
+        private void SendEmail(EmailSettings settings, string subject, string body, bool htmlBody = false)
         {
             var email = new MimeMessage();
 
@@ -134,27 +131,6 @@ namespace NzbDrone.Core.Notifications.Email
             {
                 Text = body
             };
-
-            if (attachmentUrls != null)
-            {
-                var builder = new BodyBuilder();
-                builder.HtmlBody = body;
-                foreach (var url in attachmentUrls)
-                {
-                    if (MediaFileExtensions.TextExtensions.Contains(System.IO.Path.GetExtension(url)))
-                    {
-                        var bytes = System.IO.File.ReadAllBytes(url);
-                        builder.Attachments.Add(url, bytes);
-                        _logger.Trace("Attaching ebook file: {0}", url);
-                    }
-                    else
-                    {
-                        _logger.Trace("Skipping audiobook file: {0}", url);
-                    }
-                }
-
-                email.Body = builder.ToMessageBody();
-            }
 
             _logger.Debug("Sending email Subject: {0}", subject);
             try

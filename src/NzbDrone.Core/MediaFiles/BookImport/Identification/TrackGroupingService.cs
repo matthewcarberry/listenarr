@@ -31,17 +31,9 @@ namespace NzbDrone.Core.MediaFiles.BookImport.Identification
 
             var releases = new List<LocalEdition>();
 
-            // text files are always single file releases
-            var textFiles = localTracks.Where(x => MediaFileExtensions.TextExtensions.Contains(Path.GetExtension(x.Path))).ToList();
-
-            foreach (var file in textFiles)
-            {
-                releases.Add(new LocalEdition(new List<LocalBook> { file }));
-            }
-
             // first attempt, assume grouped by folder
             var unprocessed = new List<LocalBook>();
-            foreach (var group in GroupTracksByDirectory(localTracks.Except(textFiles).ToList()))
+            foreach (var group in GroupTracksByDirectory(localTracks))
             {
                 var tracks = group.ToList();
                 if (LooksLikeSingleRelease(tracks))
