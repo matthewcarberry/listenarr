@@ -59,7 +59,7 @@ namespace NzbDrone.Core.Test.OrganizerTests.FileNameBuilderTests
                   .Setup(c => c.GetConfig()).Returns(_namingConfig);
 
             _trackFile = Builder<BookFile>.CreateNew()
-                .With(e => e.Quality = new QualityModel(Quality.MOBI))
+                .With(e => e.Quality = new QualityModel(Quality.M4B))
                 .With(e => e.ReleaseGroup = "ReadarrTest")
                 .Build();
 

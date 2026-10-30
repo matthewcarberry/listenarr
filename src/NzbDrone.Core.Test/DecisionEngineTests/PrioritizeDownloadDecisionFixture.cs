@@ -371,7 +371,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
         public void should_prefer_quality_over_the_number_of_peers()
         {
             var remoteBook1 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.MP3));
-            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3));
+            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.UnknownAudio));
 
             var torrentInfo1 = new TorrentInfo();
             torrentInfo1.PublishDate = DateTime.Now;
@@ -495,9 +495,9 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
         [Test]
         public void sort_download_decisions_based_on_indexer_priority()
         {
-            var remoteBook1 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3, new Revision(1)), indexerPriority: 25);
-            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3, new Revision(1)), indexerPriority: 50);
-            var remoteBook3 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3, new Revision(1)), indexerPriority: 1);
+            var remoteBook1 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.M4B, new Revision(1)), indexerPriority: 25);
+            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.M4B, new Revision(1)), indexerPriority: 50);
+            var remoteBook3 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.M4B, new Revision(1)), indexerPriority: 1);
 
             var decisions = new List<DownloadDecision>();
             decisions.AddRange(new[] { new DownloadDecision(remoteBook1), new DownloadDecision(remoteBook2), new DownloadDecision(remoteBook3) });
@@ -511,10 +511,10 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
         [Test]
         public void ensure_download_decisions_indexer_priority_is_not_perfered_over_quality()
         {
-            var remoteBook1 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.EPUB, new Revision(1)), indexerPriority: 25);
-            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3, new Revision(1)), indexerPriority: 50);
-            var remoteBook3 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.PDF, new Revision(1)), indexerPriority: 1);
-            var remoteBook4 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.AZW3, new Revision(1)), indexerPriority: 25);
+            var remoteBook1 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.MP3, new Revision(1)), indexerPriority: 25);
+            var remoteBook2 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.M4B, new Revision(1)), indexerPriority: 50);
+            var remoteBook3 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.UnknownAudio, new Revision(1)), indexerPriority: 1);
+            var remoteBook4 = GivenRemoteBook(new List<Book> { GivenBook(1) }, new QualityModel(Quality.M4B, new Revision(1)), indexerPriority: 25);
 
             var decisions = new List<DownloadDecision>();
             decisions.AddRange(new[] { new DownloadDecision(remoteBook1), new DownloadDecision(remoteBook2), new DownloadDecision(remoteBook3), new DownloadDecision(remoteBook4) });

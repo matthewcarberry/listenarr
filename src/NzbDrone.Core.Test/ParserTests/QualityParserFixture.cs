@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using NzbDrone.Core.Parser;
@@ -13,9 +14,7 @@ namespace NzbDrone.Core.Test.ParserTests
         {
             new object[] { Quality.MP3 },
             new object[] { Quality.FLAC },
-            new object[] { Quality.EPUB },
-            new object[] { Quality.MOBI },
-            new object[] { Quality.AZW3 }
+            new object[] { Quality.M4B }
         };
 
         [TestCase("VA - The Best 101 Love Ballads (2017) MP3 [192 kbps]")]
@@ -68,6 +67,15 @@ namespace NzbDrone.Core.Test.ParserTests
         public void quality_parse(string title)
         {
             ParseAndVerifyQuality(title, null, 0, Quality.Unknown);
+        }
+
+        [TestCase("Author Title - Book Title (2017) EPUB")]
+        [TestCase("Author Title - Book Title (2017) [MOBI]")]
+        [TestCase("Author Title - Book Title (2017) AZW3")]
+        [TestCase("Author Title - Book Title (2017) PDF")]
+        public void should_not_treat_ebook_release_as_audio_even_in_audio_category(string title)
+        {
+            QualityParser.ParseQuality(title, null, new List<int> { 3030 }).Quality.Should().Be(Quality.Unknown);
         }
 
         [Test]

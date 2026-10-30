@@ -188,7 +188,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
                 _qualityProfile,
                 new QualityModel(Quality.MP3),
                 new List<CustomFormat>(),
-                new QualityModel(Quality.PDF),
+                new QualityModel(Quality.UnknownAudio),
                 new List<CustomFormat>())
             .Should().BeTrue();
         }
@@ -202,7 +202,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
                 _qualityProfile,
                 new QualityModel(Quality.MP3),
                 new List<CustomFormat>(),
-                new QualityModel(Quality.PDF),
+                new QualityModel(Quality.UnknownAudio),
                 new List<CustomFormat>())
             .Should().BeTrue();
         }

@@ -16,11 +16,11 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
     {
         public static object[] IsUpgradeTestCases =
         {
-            new object[] { Quality.AZW3, 1, Quality.AZW3, 2, Quality.AZW3, true },
+            new object[] { Quality.UnknownAudio, 1, Quality.UnknownAudio, 2, Quality.UnknownAudio, true },
             new object[] { Quality.MP3, 1, Quality.MP3, 2, Quality.MP3, true },
             new object[] { Quality.MP3, 1, Quality.MP3, 1, Quality.MP3, false },
-            new object[] { Quality.MP3, 1, Quality.AZW3, 2, Quality.MP3, false },
-            new object[] { Quality.MP3, 1, Quality.AZW3, 2, Quality.MP3, false },
+            new object[] { Quality.MP3, 1, Quality.UnknownAudio, 2, Quality.MP3, false },
+            new object[] { Quality.MP3, 1, Quality.UnknownAudio, 2, Quality.MP3, false },
             new object[] { Quality.MP3, 1, Quality.MP3, 1, Quality.MP3, false }
         };
 

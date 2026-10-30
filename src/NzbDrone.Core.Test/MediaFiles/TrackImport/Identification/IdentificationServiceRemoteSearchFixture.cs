@@ -18,7 +18,7 @@ namespace NzbDrone.Core.Test.MediaFiles.BookImport.Identification
             {
                 new LocalBook
                 {
-                    Path = "C:\\book.epub",
+                    Path = "C:\\book.m4b",
                     FileTrackInfo = new ParsedTrackInfo()
                 }
             };

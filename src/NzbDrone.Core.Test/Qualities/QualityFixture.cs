@@ -14,23 +14,19 @@ namespace NzbDrone.Core.Test.Qualities
         public static object[] FromIntCases =
                 {
                         new object[] { 0, Quality.Unknown },
-                        new object[] { 1, Quality.PDF },
-                        new object[] { 2, Quality.MOBI },
-                        new object[] { 3, Quality.EPUB },
-                        new object[] { 4, Quality.AZW3 },
                         new object[] { 10, Quality.MP3 },
                         new object[] { 11, Quality.FLAC },
+                        new object[] { 12, Quality.M4B },
+                        new object[] { 13, Quality.UnknownAudio },
                 };
 
         public static object[] ToIntCases =
                 {
                         new object[] { Quality.Unknown, 0 },
-                        new object[] { Quality.PDF, 1 },
-                        new object[] { Quality.MOBI, 2 },
-                        new object[] { Quality.EPUB, 3 },
-                        new object[] { Quality.AZW3, 4 },
                         new object[] { Quality.MP3, 10 },
                         new object[] { Quality.FLAC, 11 },
+                        new object[] { Quality.M4B, 12 },
+                        new object[] { Quality.UnknownAudio, 13 },
                 };
 
         [Test]
@@ -39,6 +35,16 @@ namespace NzbDrone.Core.Test.Qualities
         {
             var quality = (Quality)source;
             quality.Should().Be(expected);
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        public void should_convert_retired_ebook_quality_ids_to_unknown(int source)
+        {
+            var quality = (Quality)source;
+            quality.Should().Be(Quality.Unknown);
         }
 
         [Test]
@@ -54,10 +60,9 @@ namespace NzbDrone.Core.Test.Qualities
             var qualities = new List<Quality>
             {
                 Quality.Unknown,
-                Quality.MOBI,
-                Quality.EPUB,
-                Quality.AZW3,
+                Quality.UnknownAudio,
                 Quality.MP3,
+                Quality.M4B,
                 Quality.FLAC
             };
 

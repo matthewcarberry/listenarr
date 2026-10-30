@@ -28,6 +28,9 @@ namespace NzbDrone.Common.EnvironmentInfo
 
         public static string AppName { get; } = "Readarr";
 
+        // User facing name. AppName stays Readarr so config paths and Prowlarr's Readarr integration keep working.
+        public static string DisplayName { get; } = "Listenarr";
+
         public static Version Version { get; }
         public static string Branch { get; }
         public static string Release { get; }

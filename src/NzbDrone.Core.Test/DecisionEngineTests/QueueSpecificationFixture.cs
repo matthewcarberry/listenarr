@@ -154,7 +154,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests
                                                       .With(r => r.Books = new List<Book> { _book })
                                                       .With(r => r.ParsedBookInfo = new ParsedBookInfo
                                                       {
-                                                          Quality = new QualityModel(Quality.AZW3)
+                                                          Quality = new QualityModel(Quality.UnknownAudio)
                                                       })
                                                       .With(r => r.Release = _releaseInfo)
                                                       .With(r => r.CustomFormats = new List<CustomFormat>())

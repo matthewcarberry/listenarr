@@ -47,11 +47,11 @@ namespace NzbDrone.Core.Test.DecisionEngineTests.RssSync
                                                    .Build();
 
             _profile.Items = new List<QualityProfileQualityItem>();
-            _profile.Items.Add(new QualityProfileQualityItem { Allowed = true, Quality = Quality.PDF });
-            _profile.Items.Add(new QualityProfileQualityItem { Allowed = true, Quality = Quality.AZW3 });
+            _profile.Items.Add(new QualityProfileQualityItem { Allowed = true, Quality = Quality.UnknownAudio });
+            _profile.Items.Add(new QualityProfileQualityItem { Allowed = true, Quality = Quality.M4B });
             _profile.Items.Add(new QualityProfileQualityItem { Allowed = true, Quality = Quality.MP3 });
 
-            _profile.Cutoff = Quality.AZW3.Id;
+            _profile.Cutoff = Quality.M4B.Id;
 
             _remoteBook.ParsedBookInfo = new ParsedBookInfo();
             _remoteBook.Release = new ReleaseInfo();
@@ -101,7 +101,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests.RssSync
         [Test]
         public void should_be_false_when_system_invoked_search_and_release_is_younger_than_delay()
         {
-            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.MOBI);
+            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.UnknownAudio);
             _remoteBook.Release.PublishDate = DateTime.UtcNow;
 
             _delayProfile.UsenetDelay = 720;
@@ -143,7 +143,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests.RssSync
         [Test]
         public void should_be_true_when_release_is_older_than_delay()
         {
-            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.MOBI);
+            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.UnknownAudio);
             _remoteBook.Release.PublishDate = DateTime.UtcNow.AddHours(-10);
 
             _delayProfile.UsenetDelay = 60;
@@ -154,7 +154,7 @@ namespace NzbDrone.Core.Test.DecisionEngineTests.RssSync
         [Test]
         public void should_be_false_when_release_is_younger_than_delay()
         {
-            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.MOBI);
+            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.UnknownAudio);
             _remoteBook.Release.PublishDate = DateTime.UtcNow;
 
             _delayProfile.UsenetDelay = 720;
@@ -201,10 +201,10 @@ namespace NzbDrone.Core.Test.DecisionEngineTests.RssSync
         [Test]
         public void should_be_false_when_release_is_proper_for_existing_book_of_different_quality()
         {
-            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.AZW3, new Revision(version: 2));
+            _remoteBook.ParsedBookInfo.Quality = new QualityModel(Quality.M4B, new Revision(version: 2));
             _remoteBook.Release.PublishDate = DateTime.UtcNow;
 
-            GivenExistingFile(new QualityModel(Quality.PDF));
+            GivenExistingFile(new QualityModel(Quality.UnknownAudio));
 
             _delayProfile.UsenetDelay = 720;
 

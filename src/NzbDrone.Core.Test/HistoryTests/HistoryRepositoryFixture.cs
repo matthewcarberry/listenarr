@@ -35,7 +35,7 @@ namespace NzbDrone.Core.Test.HistoryTests
                 .BuildNew();
 
             var historyDvd = Builder<EntityHistory>.CreateNew()
-                .With(c => c.Quality = new QualityModel(Quality.AZW3))
+                .With(c => c.Quality = new QualityModel(Quality.MP3))
                 .With(c => c.AuthorId = 12)
                 .With(c => c.EventType = EntityHistoryEventType.Grabbed)
              .BuildNew();

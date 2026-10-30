@@ -21,7 +21,6 @@ namespace NzbDrone.Core.MediaFiles
         public IndexerFlags IndexerFlags { get; set; }
         public MediaInfoModel MediaInfo { get; set; }
         public int EditionId { get; set; }
-        public int CalibreId { get; set; }
         public int Part { get; set; }
 
         // Set when a remote metadata search was performed successfully but the file could not be

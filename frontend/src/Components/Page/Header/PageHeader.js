@@ -54,7 +54,7 @@ class PageHeader extends Component {
             <img
               className={styles.logo}
               src={`${window.Readarr.urlBase}/Content/Images/logo.svg`}
-              alt="Readarr Logo"
+              alt="Listenarr Logo"
             />
           </Link>
         </div>

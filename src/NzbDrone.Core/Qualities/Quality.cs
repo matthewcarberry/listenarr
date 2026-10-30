@@ -70,11 +70,7 @@ namespace NzbDrone.Core.Qualities
             return !Equals(left, right);
         }
 
-        public static Quality Unknown => new Quality(0, "Unknown Text");
-        public static Quality PDF => new Quality(1, "PDF");
-        public static Quality MOBI => new Quality(2, "MOBI");
-        public static Quality EPUB => new Quality(3, "EPUB");
-        public static Quality AZW3 => new Quality(4, "AZW3");
+        public static Quality Unknown => new Quality(0, "Unknown");
         public static Quality MP3 => new Quality(10, "MP3");
         public static Quality FLAC => new Quality(11, "FLAC");
         public static Quality M4B => new Quality(12, "M4B");
@@ -85,10 +81,6 @@ namespace NzbDrone.Core.Qualities
             All = new List<Quality>
             {
                 Unknown,
-                PDF,
-                MOBI,
-                EPUB,
-                AZW3,
                 UnknownAudio,
                 MP3,
                 M4B,
@@ -104,10 +96,6 @@ namespace NzbDrone.Core.Qualities
             DefaultQualityDefinitions = new HashSet<QualityDefinition>
             {
                 new QualityDefinition(Quality.Unknown)      { Weight = 1, MinSize = 0, MaxSize = 350, GroupWeight = 1 },
-                new QualityDefinition(Quality.PDF)          { Weight = 5, MinSize = 0, MaxSize = 350, GroupWeight = 2 },
-                new QualityDefinition(Quality.MOBI)         { Weight = 10, MinSize = 0, MaxSize = 350, GroupWeight = 10 },
-                new QualityDefinition(Quality.EPUB)         { Weight = 11, MinSize = 0, MaxSize = 350, GroupWeight = 11 },
-                new QualityDefinition(Quality.AZW3)         { Weight = 12, MinSize = 0, MaxSize = 350, GroupWeight = 12 },
                 new QualityDefinition(Quality.UnknownAudio) { Weight = 50, MinSize = 0, MaxSize = 350, GroupWeight = 50 },
                 new QualityDefinition(Quality.MP3)      { Weight = 100, MinSize = 0, MaxSize = 350, GroupWeight = 100 },
                 new QualityDefinition(Quality.M4B)          { Weight = 105, MinSize = 0, MaxSize = 350, GroupWeight = 105 },
@@ -123,7 +111,8 @@ namespace NzbDrone.Core.Qualities
 
         public static Quality FindById(int id)
         {
-            if (id == 0)
+            // Ids 1-4 were the retired ebook qualities (PDF, MOBI, EPUB, AZW3)
+            if (id >= 0 && id <= 4)
             {
                 return Unknown;
             }

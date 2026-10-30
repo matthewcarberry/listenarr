@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Text.Json;
 using NzbDrone.Common.Extensions;
 
-namespace NzbDrone.Core.Books.Calibre
+namespace NzbDrone.Core.Books.Languages
 {
-    public static class Extensions
+    public static class LanguageExtensions
     {
         private static readonly Dictionary<string, string> TwoToThree;
         private static readonly Dictionary<string, string> ByThree;
@@ -40,7 +40,7 @@ namespace NzbDrone.Core.Books.Calibre
 
         public static HashSet<string> KnownLanguages { get; }
 
-        static Extensions()
+        static LanguageExtensions()
         {
             var assembly = Assembly.GetExecutingAssembly();
             TwoToThree = InitializeDictionary(assembly, "2to3.json");
